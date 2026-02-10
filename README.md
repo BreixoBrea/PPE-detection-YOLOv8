@@ -22,16 +22,6 @@ A module dedicated to parsing regulatory PDF documents. Using Natural Language P
 2. Intelligent Verification (Computer Vision)
 Once the requirements are set, the system uses a smart camera feed to detect the presence (or absence) of the required equipment on workers entering the area. This is powered by YOLOv8, ensuring high speed and accuracy.
 
-🛠️ **Tech Stack**
-
-Vision: YOLOv8 (Ultralytics)
-
-Language: Python
-
-NLP: Gemini
-
-Tracking: Gradiant Methodology
-
 
 ### 📄 NLP Module (Regulation Extraction)
 This module acts as the "brain" of the system, interpreting complex safety documents.
@@ -41,3 +31,12 @@ This module acts as the "brain" of the system, interpreting complex safety docum
     * Automatic PPE categorization.
     * Mandatory vs. Optional usage detection.
     * Interactive GUI for file selection.
+
+### 🔍 CV Module (PPE Detection & Compliance)
+This module acts as the "eyes" of the system, verifying real-time safety compliance through visual analysis.
+* **Powered by:** YOLOv8 (Ultralytics) fine-tuned for safety equipment.
+* **Function:** Identifies PPE items in images and validates them against extracted regulations.
+* **Features:** Real-time Object Detection: High-accuracy identification of helmets, vests, gloves, and boots.
+   * Automated Compliance Check: Cross-references detected items with area-specific requirements from the NLP module.
+   * Access Control Logic: Automatically generates "Authorized" or "Denied" verdicts based on mandatory equipment.
+   * Visual Reporting: Generates annotated images and detailed CSV reports for safety audits.
