@@ -31,3 +31,13 @@ Language: Python
 NLP: Gemini
 
 Tracking: Gradiant Methodology
+
+
+### 📄 NLP Module (Regulation Extraction)
+This module acts as the "brain" of the system, interpreting complex safety documents.
+* **Powered by:** Google Gemini 2.0 Flash.
+* **Function:** Converts unstructured PDF text into actionable JSON data.
+* **Features:**
+    * Automatic PPE categorization.
+    * Mandatory vs. Optional usage detection.
+    * Interactive GUI for file selection.
