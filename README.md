@@ -40,3 +40,14 @@ This module acts as the "eyes" of the system, verifying real-time safety complia
    * Automated Compliance Check: Cross-references detected items with area-specific requirements from the NLP module.
    * Access Control Logic: Automatically generates "Authorized" or "Denied" verdicts based on mandatory equipment.
    * Visual Reporting: Generates annotated images and detailed CSV reports for safety audits.
+ 
+## 📺 Video Demonstration
+Due to file size limitations, the full high-resolution demonstration is hosted on OneDrive.
+
+👉 **[Watch the Demo Video Here](https://nubeusc-my.sharepoint.com/personal/breixo_brea_rai_usc_es/_layouts/15/stream.aspx?id=%2Fpersonal%2Fbreixo%5Fbrea%5Frai%5Fusc%5Fes%2FDocuments%2FGRIA%2F4%C2%BA%20CURSO%2E%201%C2%BA%20CUADRIMESTRE%2FProxecto%20Integrador%20II%2Fproxecto%5Ffinal%2Fdemo%2Emp4&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&ga=1&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2E5d5b40f2%2De6c7%2D4663%2D9228%2Dc6229afd38c0)**
+
+### What's shown in the video:
+* **Regulation Extraction:** Processing a safety PDF into JSON.
+* **Area Selection:** Dynamic selection of work zones.
+* **PPE Detection:** Real-time analysis of worker images.
+* **Compliance Report:** Generation of access granted/denied verdicts.

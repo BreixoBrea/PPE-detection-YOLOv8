@@ -1,0 +1,19 @@
+image_name,class_id,class_name,confidence,bbox_x1,bbox_y1,bbox_x2,bbox_y2,access_granted
+casco_chaleco.jpg,3,Safety Vest,0.8382,174.12,177.67,432.91,388.96,DENIED (Missing: gloves)
+casco_chaleco.jpg,1,Helmet,0.7814,240.36,0.00,384.09,79.79,DENIED (Missing: gloves)
+casco_chaleco_guantes.jpg,1,Helmet,0.9077,367.53,267.68,662.75,507.12,DENIED (Missing: gloves)
+casco_chaleco_guantes.jpg,3,Safety Vest,0.8745,208.32,702.64,810.07,1498.07,DENIED (Missing: gloves)
+casco_chaleco_guantes_botas.png,3,Safety Vest,0.8890,427.49,260.45,645.50,553.92,DENIED (Missing: gloves)
+casco_chaleco_guantes_botas.png,2,Safety Boot,0.8831,401.94,926.16,486.71,993.47,DENIED (Missing: gloves)
+casco_chaleco_guantes_botas.png,2,Safety Boot,0.8733,594.99,921.54,678.68,990.60,DENIED (Missing: gloves)
+casco_chaleco_guantes_botas.png,1,Helmet,0.8413,475.90,118.31,588.76,195.29,DENIED (Missing: gloves)
+casco_fuera_posicion.jpg,-1,None,0.0000,0.00,0.00,0.00,0.00,"DENIED (No PPE detected. Missing: helmet, gloves)"
+casco_guantes_botas.png,0,Gloves,0.8876,376.10,590.36,434.55,715.56,AUTHORIZED
+casco_guantes_botas.png,0,Gloves,0.8545,571.85,589.39,636.93,708.01,AUTHORIZED
+casco_guantes_botas.png,1,Helmet,0.8350,453.79,239.02,557.71,315.28,AUTHORIZED
+casco_guantes_botas.png,2,Safety Boot,0.8306,542.13,893.04,612.65,998.56,AUTHORIZED
+casco_guantes_botas.png,2,Safety Boot,0.8029,395.02,891.78,473.74,997.71,AUTHORIZED
+chalecos_guantes_botas.png,3,Safety Vest,0.9020,585.19,396.02,741.09,641.81,"DENIED (Missing: helmet, gloves)"
+chalecos_guantes_botas.png,3,Safety Vest,0.7856,418.26,401.42,585.27,640.98,"DENIED (Missing: helmet, gloves)"
+chalecos_guantes_botas.png,2,Safety Boot,0.7773,407.42,875.72,554.38,923.97,"DENIED (Missing: helmet, gloves)"
+chalecos_guantes_botas.png,2,Safety Boot,0.7656,578.14,883.49,705.71,941.04,"DENIED (Missing: helmet, gloves)"

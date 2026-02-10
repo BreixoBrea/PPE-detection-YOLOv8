@@ -1,0 +1,29 @@
+{
+    "document_id": "DOC-EMP-001",
+    "titulo": "Normativa de Seguridad Industrial - Normativas del Edificio Emprendia",
+    "fecha": "01-01-2023",
+    "areas": [
+        {
+            "nombre_area": "Edificio Emprendia",
+            "requisitos_epi": [
+                {
+                    "nombre_epi": "chaleco reflectante",
+                    "uso_obligatorio": true
+                },
+                {
+                    "nombre_epi": "casco de seguridad",
+                    "uso_obligatorio": true
+                },
+                {
+                    "nombre_epi": "guantes de proteccion",
+                    "uso_obligatorio": false
+                },
+                {
+                    "nombre_epi": "botas",
+                    "uso_obligatorio": false
+                }
+            ]
+        }
+    ],
+    "tareas": []
+}

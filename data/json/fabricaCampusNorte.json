@@ -1,0 +1,95 @@
+{
+    "document_id": "58735",
+    "titulo": "Normativa de Seguridad Industrial - Fábrica Campus Norte",
+    "fecha": "29-11-2024",
+    "areas": [
+        {
+            "nombre_area": "Área de Producción de Línea de Ensamblaje",
+            "requisitos_epi": [
+                {
+                    "nombre_epi": "casco de seguridad",
+                    "uso_obligatorio": true
+                },
+                {
+                    "nombre_epi": "guantes de proteccion",
+                    "uso_obligatorio": true
+                }
+            ]
+        },
+        {
+            "nombre_area": "Área de Almacén de Materiales",
+            "requisitos_epi": [
+                {
+                    "nombre_epi": "casco de seguridad",
+                    "uso_obligatorio": true
+                },
+                {
+                    "nombre_epi": "chaleco reflectante",
+                    "uso_obligatorio": true
+                },
+                {
+                    "nombre_epi": "guantes de proteccion",
+                    "uso_obligatorio": true
+                }
+            ]
+        }
+    ],
+    "tareas": [
+        {
+            "nombre_tarea": "Tarea de Ensamblaje de Componentes en la Línea de Producción",
+            "requisitos_epi": [
+                {
+                    "nombre_epi": "casco de seguridad",
+                    "uso_obligatorio": true
+                },
+                {
+                    "nombre_epi": "guantes de proteccion",
+                    "uso_obligatorio": true
+                }
+            ]
+        },
+        {
+            "nombre_tarea": "Tarea de Carga y Descarga en el Almacén de Materiales",
+            "requisitos_epi": [
+                {
+                    "nombre_epi": "casco de seguridad",
+                    "uso_obligatorio": true
+                },
+                {
+                    "nombre_epi": "chaleco reflectante",
+                    "uso_obligatorio": true
+                },
+                {
+                    "nombre_epi": "guantes de proteccion",
+                    "uso_obligatorio": true
+                }
+            ]
+        },
+        {
+            "nombre_tarea": "Tarea de Reparación de Maquinaria",
+            "requisitos_epi": [
+                {
+                    "nombre_epi": "casco de seguridad",
+                    "uso_obligatorio": true
+                },
+                {
+                    "nombre_epi": "guantes de proteccion",
+                    "uso_obligatorio": true
+                }
+            ]
+        },
+        {
+            "nombre_tarea": "Tarea de Soldadura y Corte de Materiales",
+            "requisitos_epi": [
+                {
+                    "nombre_epi": "casco de seguridad",
+                    "uso_obligatorio": true
+                },
+                {
+                    "nombre_epi": "guantes de proteccion",
+                    "uso_obligatorio": true
+                }
+            ]
+        }
+    ]
+}

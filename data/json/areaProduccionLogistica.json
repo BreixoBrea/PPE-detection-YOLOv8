@@ -1,0 +1,197 @@
+{
+    "document_id": "DOC-001",
+    "titulo": "Normativa de Seguridad Industrial - Producción y Logística",
+    "fecha": "01-12-2024",
+    "areas": [
+        {
+            "nombre_area": "Zona A: Producción de Componentes",
+            "requisitos_epi": [
+                {
+                    "nombre_epi": "casco de seguridad",
+                    "uso_obligatorio": true
+                },
+                {
+                    "nombre_epi": "guantes de proteccion",
+                    "uso_obligatorio": true
+                },
+                {
+                    "nombre_epi": "botas",
+                    "uso_obligatorio": true
+                }
+            ]
+        },
+        {
+            "nombre_area": "Zona B: Ensamblaje Final",
+            "requisitos_epi": [
+                {
+                    "nombre_epi": "chaleco reflectante",
+                    "uso_obligatorio": true
+                },
+                {
+                    "nombre_epi": "guantes de proteccion",
+                    "uso_obligatorio": true
+                }
+            ]
+        },
+        {
+            "nombre_area": "Zona C: Almacén y Logística",
+            "requisitos_epi": [
+                {
+                    "nombre_epi": "casco de seguridad",
+                    "uso_obligatorio": true
+                },
+                {
+                    "nombre_epi": "chaleco reflectante",
+                    "uso_obligatorio": true
+                },
+                {
+                    "nombre_epi": "guantes de proteccion",
+                    "uso_obligatorio": true
+                }
+            ]
+        }
+    ],
+    "tareas": [
+        {
+            "nombre_tarea": "Operar maquinaria de corte y perforación.",
+            "requisitos_epi": [
+                {
+                    "nombre_epi": "casco de seguridad",
+                    "uso_obligatorio": true
+                },
+                {
+                    "nombre_epi": "guantes de proteccion",
+                    "uso_obligatorio": true
+                },
+                {
+                    "nombre_epi": "botas",
+                    "uso_obligatorio": true
+                }
+            ]
+        },
+        {
+            "nombre_tarea": "Manejo de materiales metálicos y plásticos.",
+            "requisitos_epi": [
+                {
+                    "nombre_epi": "casco de seguridad",
+                    "uso_obligatorio": true
+                },
+                {
+                    "nombre_epi": "guantes de proteccion",
+                    "uso_obligatorio": true
+                },
+                {
+                    "nombre_epi": "botas",
+                    "uso_obligatorio": true
+                }
+            ]
+        },
+        {
+            "nombre_tarea": "Supervisión de la calidad de las piezas.",
+            "requisitos_epi": [
+                {
+                    "nombre_epi": "casco de seguridad",
+                    "uso_obligatorio": true
+                },
+                {
+                    "nombre_epi": "guantes de proteccion",
+                    "uso_obligatorio": true
+                },
+                {
+                    "nombre_epi": "botas",
+                    "uso_obligatorio": true
+                }
+            ]
+        },
+        {
+            "nombre_tarea": "Montaje de componentes.",
+            "requisitos_epi": [
+                {
+                    "nombre_epi": "chaleco reflectante",
+                    "uso_obligatorio": true
+                },
+                {
+                    "nombre_epi": "guantes de proteccion",
+                    "uso_obligatorio": true
+                }
+            ]
+        },
+        {
+            "nombre_tarea": "Realización de pruebas funcionales.",
+            "requisitos_epi": [
+                {
+                    "nombre_epi": "chaleco reflectante",
+                    "uso_obligatorio": true
+                },
+                {
+                    "nombre_epi": "guantes de proteccion",
+                    "uso_obligatorio": true
+                }
+            ]
+        },
+        {
+            "nombre_tarea": "Empaque y etiquetado de productos terminados.",
+            "requisitos_epi": [
+                {
+                    "nombre_epi": "chaleco reflectante",
+                    "uso_obligatorio": true
+                },
+                {
+                    "nombre_epi": "guantes de proteccion",
+                    "uso_obligatorio": true
+                }
+            ]
+        },
+        {
+            "nombre_tarea": "Carga y descarga de materiales.",
+            "requisitos_epi": [
+                {
+                    "nombre_epi": "casco de seguridad",
+                    "uso_obligatorio": true
+                },
+                {
+                    "nombre_epi": "chaleco reflectante",
+                    "uso_obligatorio": true
+                },
+                {
+                    "nombre_epi": "guantes de proteccion",
+                    "uso_obligatorio": true
+                }
+            ]
+        },
+        {
+            "nombre_tarea": "Organización y almacenamiento de productos.",
+            "requisitos_epi": [
+                {
+                    "nombre_epi": "casco de seguridad",
+                    "uso_obligatorio": true
+                },
+                {
+                    "nombre_epi": "chaleco reflectante",
+                    "uso_obligatorio": true
+                },
+                {
+                    "nombre_epi": "guantes de proteccion",
+                    "uso_obligatorio": true
+                }
+            ]
+        },
+        {
+            "nombre_tarea": "Uso de montacargas y vehículos de transporte interno.",
+            "requisitos_epi": [
+                {
+                    "nombre_epi": "casco de seguridad",
+                    "uso_obligatorio": true
+                },
+                {
+                    "nombre_epi": "chaleco reflectante",
+                    "uso_obligatorio": true
+                },
+                {
+                    "nombre_epi": "guantes de proteccion",
+                    "uso_obligatorio": true
+                }
+            ]
+        }
+    ]
+}
