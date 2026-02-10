@@ -1,0 +1,27 @@
+# PPE Detection Dataset Configuration
+
+# Path to the dataset root directory
+# Note: Adjust this path if your folder structure differs. 
+# Current setting assumes 'datasets' is in the parent directory of this script.
+path: ../datasets  
+
+# Training, validation, and test directories (relative to 'path')
+# Note: Ensure these subdirectories match your local folder structure.
+train: train/images
+val: val/images
+test: test/images
+
+# Dataset Information:
+# The original Roboflow dataset has been significantly curated and cleaned.
+# Data reduction: From 8,845 original images to 927 high-quality, verified images.
+# The images could still be improved, which would greatly enhance the project’s results.
+nc: 4
+names: ['Gloves', 'Helmet', 'Safety Boot', 'Safety Vest']
+
+# Credits: Original dataset source
+roboflow:
+  workspace: skcet-g4h72
+  project: construction-ppe-rdhzo
+  version: 3
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/skcet-g4h72/construction-ppe-rdhzo/dataset/3
