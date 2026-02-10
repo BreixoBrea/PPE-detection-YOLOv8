@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safety Regulation Extraction Dashboard</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .header { background: white; border-radius: 15px; padding: 30px; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .header h1 { color: #667eea; font-size: 2.5em; margin-bottom: 10px; }
+        .header p { color: #666; font-size: 1.1em; }
+        .main-content { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px; }
+        @media (max-width: 968px) { .main-content { grid-template-columns: 1fr; } }
+        .card { background: white; border-radius: 15px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); margin-bottom: 30px; }
+        .card h2 { color: #333; margin-bottom: 20px; font-size: 1.5em; display: flex; align-items: center; gap: 10px; }
+        .upload-area { border: 3px dashed #667eea; border-radius: 10px; padding: 40px; text-align: center; background: #f8f9ff; cursor: pointer; transition: all 0.3s; }
+        .upload-area:hover { background: #e8ebff; border-color: #764ba2; }
+        .upload-area.dragover { background: #d8dbff; border-color: #764ba2; }
+        .upload-icon { font-size: 4em; margin-bottom: 15px; }
+        .upload-text { color: #666; font-size: 1.1em; margin-bottom: 10px; }
+        input[type="file"] { display: none; }
+        .btn { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; padding: 12px 30px; border-radius: 8px; cursor: pointer; font-size: 1em; font-weight: 600; transition: transform 0.2s, box-shadow 0.2s; margin-top: 15px; width: 100%; }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4); }
+        
+        /* Estilos para el nuevo formulario de validación */
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; color: #444; }
+        .form-control { width: 100%; padding: 12px; border: 2px solid #e1e4e8; border-radius: 8px; font-size: 1em; }
+        
+        /* Estilos para la tabla de cumplimiento */
+        .compliance-table { width: 100%; border-collapse: collapse; margin-top: 20px; background: #fff; border-radius: 8px; overflow: hidden; }
+        .compliance-table th, .compliance-table td { padding: 15px; text-align: left; border-bottom: 1px solid #eee; }
+        .compliance-table th { background: #f8f9ff; color: #667eea; font-weight: 600; }
+        .status-allowed { color: #28a745; font-weight: bold; }
+        .status-denied { color: #dc3545; font-weight: bold; }
+
+        .status-message { margin-top: 20px; padding: 15px; border-radius: 8px; font-weight: 500; display: none; }
+        .status-message.success { background: #d4edda; color: #155724; }
+        .status-message.error { background: #f8d7da; color: #721c24; }
+        .status-message.info { background: #d1ecf1; color: #0c5460; }
+        .loading { display: inline-block; width: 20px; height: 20px; border: 3px solid #f3f3f3; border-top: 3px solid #667eea; border-radius: 50%; animation: spin 1s linear infinite; margin-right: 10px; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .files-list { max-height: 400px; overflow-y: auto; }
+        .file-item { background: #f8f9ff; padding: 15px; border-radius: 8px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; }
+        .btn-small { padding: 8px 15px; font-size: 0.9em; background: white; color: #667eea; border: 2px solid #667eea; border-radius: 8px; cursor: pointer; }
+        .btn-danger { color: #dc3545; border-color: #dc3545; }
+        .result-viewer { background: #f8f9ff; border-radius: 8px; padding: 20px; margin-top: 20px; max-height: 500px; overflow-y: auto; }
+        .json-viewer { background: #1e1e1e; color: #d4d4d4; padding: 20px; border-radius: 8px; font-family: 'Courier New', monospace; font-size: 0.9em; overflow-x: auto; }
+        .detection-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-bottom: 20px; }
+        .stat-card { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 10px; text-align: center; }
+        .stat-value { font-size: 2em; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🛡️ Safety Regulation Extraction</h1>
+            <p>Upload PDF documents to extract PPE requirements and validate workplace access</p>
+        </div>
+
+        <div class="main-content">
+            <div class="card">
+                <h2>📄 Process PDF Document</h2>
+                <div class="upload-area" id="pdfUploadArea">
+                    <div class="upload-icon">📁</div>
+                    <div class="upload-text">Drag & Drop PDF here</div>
+                    <div class="upload-subtext">or click to browse</div>
+                    <input type="file" id="pdfFileInput" accept=".pdf">
+                </div>
+                <div class="status-message" id="pdfStatus"></div>
+            </div>
+
+            <div class="card">
+                <h2>📋 Load Existing JSON</h2>
+                <div class="upload-area" id="jsonUploadArea">
+                    <div class="upload-icon">📊</div>
+                    <div class="upload-text">Drag & Drop JSON here</div>
+                    <div class="upload-subtext">or click to browse</div>
+                    <input type="file" id="jsonFileInput" accept=".json">
+                </div>
+                <div class="status-message" id="jsonStatus"></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>🔍 PPE Detection & Access Validation</h2>
+            <p style="color: #666; margin-bottom: 20px;">Select a regulation and area to validate worker access.</p>
+            
+            <div class="main-content" style="margin-bottom: 20px; grid-template-columns: 1fr 1fr;">
+                <div class="form-group">
+                    <label>1. Select Regulation Document:</label>
+                    <select id="referenceJson" class="form-control">
+                        <option value="">-- Choose a saved file --</option>
+                        {% for file in saved_files %}
+                        <option value="{{ file.name }}">{{ file.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>2. Select Work Area:</label>
+                    <select id="areaName" class="form-control" disabled>
+                        <option value="">-- Select a document first --</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="upload-area" id="imageUploadArea">
+                <div class="upload-icon">🖼️</div>
+                <div class="upload-text">Click to upload worker images</div>
+                <div class="upload-subtext">Validation will run automatically for the selected area</div>
+                <input type="file" id="imageFileInput" accept="image/*" multiple>
+            </div>
+
+            <div class="status-message" id="imageStatus"></div>
+            
+            <div id="detectionResults" style="display: none; margin-top: 20px;">
+                <h3 style="margin-bottom: 15px;">Compliance Report</h3>
+                <div id="detectionSummary"></div>
+                <div id="complianceReportTable"></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>💾 Saved Regulations <span class="badge badge-success">{{ saved_files|length }} files</span></h2>
+            <div class="files-list" id="filesList">
+                {% if saved_files %}
+                    {% for file in saved_files %}
+                    <div class="file-item">
+                        <div class="file-info">
+                            <div class="file-name">{{ file.name }}</div>
+                            <div class="file-meta">{{ file.size }}</div>
+                        </div>
+                        <div class="file-actions">
+                            <button class="btn-small" onclick="viewFile('{{ file.name }}')">View</button>
+                            <button class="btn-small btn-danger" onclick="deleteFile('{{ file.name }}')">Delete</button>
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="empty-state">No files yet.</div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="card" id="resultCard" style="display: none;">
+            <h2>📖 Document Details</h2>
+            <div class="result-viewer">
+                <div id="resultContent"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- PDF & JSON Upload Handlers (Original Logic) ---
+        const pdfFileInput = document.getElementById('pdfFileInput');
+        const pdfUploadArea = document.getElementById('pdfUploadArea');
+        pdfUploadArea.onclick = () => pdfFileInput.click();
+        pdfFileInput.onchange = (e) => { if(e.target.files[0]) uploadPDF(e.target.files[0]); };
+
+        const jsonFileInput = document.getElementById('jsonFileInput');
+        const jsonUploadArea = document.getElementById('jsonUploadArea');
+        jsonUploadArea.onclick = () => jsonFileInput.click();
+        jsonFileInput.onchange = (e) => { if(e.target.files[0]) uploadJSON(e.target.files[0]); };
+
+        // --- DYNAMIC AREA SELECTOR LOGIC ---
+        const referenceJson = document.getElementById('referenceJson');
+        const areaNameSelect = document.getElementById('areaName');
+
+        referenceJson.addEventListener('change', async () => {
+            const filename = referenceJson.value;
+            if (!filename) {
+                areaNameSelect.disabled = true;
+                areaNameSelect.innerHTML = '<option value="">-- Select a document first --</option>';
+                return;
+            }
+
+            try {
+                const res = await fetch(`/get-areas/${filename}`);
+                const data = await res.json();
+                if (data.success) {
+                    areaNameSelect.disabled = false;
+                    let options = '<option value="">-- Select Area --</option>';
+                    data.areas.forEach(area => {
+                        options += `<option value="${area}">${area}</option>`;
+                    });
+                    areaNameSelect.innerHTML = options;
+                }
+            } catch (err) { console.error("Error loading areas:", err); }
+        });
+
+        // --- IMAGE UPLOAD & COMPLIANCE LOGIC ---
+        const imageFileInput = document.getElementById('imageFileInput');
+        const imageUploadArea = document.getElementById('imageUploadArea');
+        imageUploadArea.onclick = () => imageFileInput.click();
+        
+        imageFileInput.onchange = async (e) => {
+            const files = Array.from(e.target.files);
+            const ref = referenceJson.value;
+            const area = areaNameSelect.value;
+
+            if (!ref || !area) {
+                alert("Please select a regulation document and a work area first.");
+                imageFileInput.value = '';
+                return;
+            }
+
+            if (files.length > 0) {
+                const formData = new FormData();
+                formData.append('reference_json', ref);
+                formData.append('area_name', area);
+                files.forEach(f => formData.append('files[]', f));
+
+                showStatus(document.getElementById('imageStatus'), 'info', '<span class="loading"></span>Running compliance check...');
+
+                try {
+                    const res = await fetch('/upload-images', { method: 'POST', body: formData });
+                    const result = await res.json();
+                    if (result.success) {
+                        showStatus(document.getElementById('imageStatus'), 'success', '✓ Validation complete!');
+                        renderCompliance(result);
+                    } else {
+                        showStatus(document.getElementById('imageStatus'), 'error', result.error);
+                    }
+                } catch (err) { showStatus(document.getElementById('imageStatus'), 'error', err.message); }
+            }
+        };
+
+        function renderCompliance(result) {
+            document.getElementById('detectionResults').style.display = 'block';
+            
+            // Render Stats
+            const summary = result.summary;
+            document.getElementById('detectionSummary').innerHTML = `
+                <div class="detection-stats">
+                    <div class="stat-card">
+                        <div class="stat-value">${summary.images_processed}</div>
+                        <div class="stat-label">Images</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">${summary.total_detections}</div>
+                        <div class="stat-label">PPE Items</div>
+                    </div>
+                </div>
+            `;
+
+            // Render Table
+            let tableHtml = `
+                <table class="compliance-table">
+                    <thead>
+                        <tr>
+                            <th>Image Name</th>
+                            <th>Access Status</th>
+                            <th>Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>`;
+            
+            for (const [img, info] of Object.entries(summary.compliance_check)) {
+                const statusClass = info.status === 'ALLOWED' ? 'status-allowed' : 'status-denied';
+                tableHtml += `
+                    <tr>
+                        <td>${img}</td>
+                        <td class="${statusClass}">${info.status}</td>
+                        <td>${info.missing && info.missing.length > 0 ? 'Missing: ' + info.missing.join(', ') : 'All set'}</td>
+                    </tr>`;
+            }
+            tableHtml += '</tbody></table>';
+            tableHtml += `<button class="btn" onclick="window.location.href='/download-detection-csv/${result.batch_id}'">Download CSV Report</button>`;
+            
+            document.getElementById('complianceReportTable').innerHTML = tableHtml;
+        }
+
+        // --- UTILITY FUNCTIONS (VIEW/DELETE/STATUS) ---
+        async function uploadPDF(file) {
+            const formData = new FormData();
+            formData.append('file', file);
+            showStatus(document.getElementById('pdfStatus'), 'info', '<span class="loading"></span>Processing PDF...');
+            const res = await fetch('/upload-pdf', { method: 'POST', body: formData });
+            const data = await res.json();
+            if (data.success) location.reload();
+        }
+
+        async function viewFile(filename) {
+            const res = await fetch('/get-json/' + filename);
+            const result = await res.json();
+            if (result.success) {
+                document.getElementById('resultCard').style.display = 'block';
+                document.getElementById('resultContent').innerHTML = '<div class="json-viewer">' + JSON.stringify(result.data, null, 2) + '</div>';
+                document.getElementById('resultCard').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        async function deleteFile(filename) {
+            if (!confirm(`Delete ${filename}?`)) return;
+            const res = await fetch('/delete-json/' + filename, { method: 'DELETE' });
+            if ((await res.json()).success) location.reload();
+        }
+
+        function showStatus(element, type, message) {
+            element.className = 'status-message ' + type;
+            element.innerHTML = message;
+            element.style.display = 'block';
+        }
+    </script>
+</body>
+</html>

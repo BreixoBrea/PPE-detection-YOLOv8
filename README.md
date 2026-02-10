@@ -6,9 +6,9 @@ Detection of Personal Protective Equipment (PPE) using computer vision in indust
 🚩 **The Problem: Occupational Risk Management**
 
 Ensuring the correct use of PPE (helmets, vests, gloves and boots) is critical in industrial settings. Traditionally, this verification is performed by supervisors through manual inspections, which are:
-- Costly: Requires dedicated personnel time.
-- Invasive: Can disrupt workflow and worker privacy.
-- Prone to error: Human fatigue can lead to missed safety violations.
+* Costly: Requires dedicated personnel time.
+* Invasive: Can disrupt workflow and worker privacy.
+* Prone to error: Human fatigue can lead to missed safety violations.
 
 🎯 **The Goal**: Automate and optimize the monitoring of PPE compliance to ensure a safer, more efficient workplace.
 

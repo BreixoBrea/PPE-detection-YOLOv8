@@ -1,0 +1,17 @@
+# Computer Vision & Deep Learning
+ultralytics
+torch
+torchvision
+
+# Web Framework
+Flask
+Werkzeug
+
+# PDF Processing
+PyPDF2
+
+# AI / NLP (Google Gemini)
+google-genai
+
+# Optional but recommended for environment variables
+python-dotenv
