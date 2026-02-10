@@ -35,7 +35,7 @@ Tracking: Gradiant Methodology
 
 ### 📄 NLP Module (Regulation Extraction)
 This module acts as the "brain" of the system, interpreting complex safety documents.
-* **Powered by:** Google Gemini 2.0 Flash.
+* **Powered by:** Google Gemini 2.5 Flash.
 * **Function:** Converts unstructured PDF text into actionable JSON data.
 * **Features:**
     * Automatic PPE categorization.
